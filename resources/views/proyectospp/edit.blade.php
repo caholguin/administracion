@@ -8,7 +8,7 @@
                     <h3 class="card-title" _msthash="2344056" _msttexthash="593021">Editar proyecto</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('proyectospp.update',$proyecto->id) }}" class="row g-3 " method="POST">
+                    <form action="{{ route('proyectospp.update',$proyecto->id) }}" class="row g-3 " method="POST" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="col-md-4">
@@ -92,26 +92,19 @@
                             @error('posicion')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
-                        </div>
-
+                        </div>  
+                        
                         <div class="col-md-4">
                             <label for="imagen" class="form-label" _msthash="3666832" _msttexthash="76193">Imagen</label>
-                            <input type="text" class="form-control" id="imagen" name="imagen" value="{{ old('imagen', $proyecto->imagen) }}">
-
+                            <input type="file" class="form-control" id="imagen" name="imagen" value="{{ old('imagen', $proyecto->imagen) }}">
+                            
                             @error('imagen')
-                                <small class="text-danger">{{ $message }}</small>
+                            <small class="text-danger">{{ $message }}</small>
                             @enderror
+
                         </div>
 
-                        <div class="col-md-4">
-                            <label for="urlpdf" class="form-label" _msthash="3666832" _msttexthash="76193">Url
-                                PDF</label>
-                            <input type="text" class="form-control" id="urlpdf" name="urlpdf" value="{{ old('urlpdf', $proyecto->urlpdf) }}">
-
-                            @error('urlpdf')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
+                       
 
                         <div class="col-md-4">
                             <label for="descripcion" class="form-label" _msthash="3667079"
@@ -125,7 +118,22 @@
                             @enderror
                         </div>
 
+                        <div class="col-md-4">
+                            <label for="urlpdf" class="form-label" _msthash="3666832" _msttexthash="76193">Url
+                                PDF</label>
+                            <input type="text" class="form-control" id="urlpdf" name="urlpdf" value="{{ old('urlpdf', $proyecto->urlpdf) }}">
 
+                            @error('urlpdf')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <div class="card ">               
+                                <img id="picture" src="{{Storage::url($proyecto->imagen)}}" class="text-center img" width="" >
+                            </div>
+                        </div>
+                     
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit" _msthash="3768895"
                                 _msttexthash="324311">Guardar</button>
@@ -139,8 +147,26 @@
         </div>
 
 
-
-
-
     </div>
+    <style>
+        .img{
+            border-radius: 5px;
+
+        }
+    </style>
+
+<script>
+    //cambiar imagen
+    document.getElementById("imagen").addEventListener('change',cambiarImagen);
+   
+   function cambiarImagen(event){
+       var file = event.target.files[0];
+       var reader = new FileReader();
+       reader.onload = (event) => {
+           document.getElementById("picture").setAttribute('src',event.target.result);
+       };
+       reader.readAsDataURL(file);
+   }
+</script>
+
 @endsection

@@ -41,3 +41,19 @@ Route::middleware('auth')->group(function () {
 
 });
 
+
+Route::get('link', function () {
+    /* Artisan::call('storage:link'); */
+ 
+    if (file_exists(public_path('storage'))) {
+        return 'ya existe';    
+    }
+ 
+    app('files')->link(
+        storage_path('app/public'),
+        public_path('storage')
+    );
+ 
+    return 'link creado';
+ });
+

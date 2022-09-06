@@ -8,7 +8,7 @@
                     <h3 class="card-title" _msthash="2344056" _msttexthash="593021">Nuevo proyecto</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('proyectospp.store') }}" class="row g-3 " method="POST">
+                    <form action="{{ route('proyectospp.store') }}" class="row g-3 " method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-4">
                             <label for="comuna" class="form-label" _msthash="3667820" _msttexthash="76037">Comuna</label>
@@ -92,7 +92,7 @@
 
                         <div class="col-md-4">
                             <label for="imagen" class="form-label" _msthash="3666832" _msttexthash="76193">URL Imagen</label>
-                            <input type="text" class="form-control" id="imagen" name="imagen" value="{{ old('imagen') }}">
+                            <input type="file" class="form-control" id="imagen" name="imagen" value="{{ old('imagen') }}">
 
                             @error('imagen')
                                 <small class="text-danger">{{ $message }}</small>
@@ -120,6 +120,11 @@
                             @enderror
                         </div>
 
+                        <div class="col-md-2">
+                            <div class="card ">               
+                                <img id="picture" src="" class="text-center img" width="" >
+                            </div>
+                        </div>
 
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit" _msthash="3768895"
@@ -138,4 +143,23 @@
 
 
     </div>
+    <style>
+        img{
+            border-radius: 5px;
+        }
+    </style>
+    
+    <script>
+        //cambiar imagen
+        document.getElementById("imagen").addEventListener('change',cambiarImagen);
+       
+       function cambiarImagen(event){
+           var file = event.target.files[0];
+           var reader = new FileReader();
+           reader.onload = (event) => {
+               document.getElementById("picture").setAttribute('src',event.target.result);
+           };
+           reader.readAsDataURL(file);
+       }
+    </script>
 @endsection

@@ -38,12 +38,7 @@
                         <div class="col-md-4">
                             <label for="posicion" class="form-label" _msthash="3666832" _msttexthash="76193">Posición</label>
                             <input type="number" class="form-control" id="posicion" name="posicion" value="{{ $proyecto->posicion }}" disabled>
-                        </div>
-
-                        <div class="col-md-4">
-                            <label for="imagen" class="form-label" _msthash="3666832" _msttexthash="76193">Imagen</label>
-                            <input type="text" class="form-control" id="imagen" name="imagen" value="{{ $proyecto->imagen }}" disabled>                           
-                        </div>
+                        </div>                       
 
                         <div class="col-md-4">
                             <label for="urlpdf" class="form-label" _msthash="3666832" _msttexthash="76193">Url
@@ -61,7 +56,11 @@
                           
                         </div>
 
-
+                        <div class="col-md-2">
+                            <div class="card mt-4">               
+                                <img  src="{{Storage::url($proyecto->imagen)}}" class="text-center img " width="" >
+                            </div>
+                        </div>
                         <div class="col-12">
                            {{--  <button class="btn btn-primary" type="submit" _msthash="3768895"
                                 _msttexthash="324311">Guardar</button> --}}
@@ -79,4 +78,12 @@
 
 
     </div>
+    <style>
+        .img{
+            border-radius: 5px;
+    
+        }
+     </style>
+
+     
 @endsection
