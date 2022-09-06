@@ -78,9 +78,9 @@
                                                     </button>
                                                 </form>
 
-                                                <div class="main-signin-footer mt-5">													
+                                               {{--  <div class="main-signin-footer mt-5">													
 													<p _msthash="4313179" _msttexthash="1033032">¿No tienes una cuenta? <a href="{{route('register')}}" _istranslated="1">Crear una cuenta</a></p>
-												</div>
+												</div> --}}
 
                                             </div>
                                         </div>
