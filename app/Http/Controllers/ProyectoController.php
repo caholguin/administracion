@@ -38,8 +38,8 @@ class ProyectoController extends Controller
            'dependencia' => 'required',
            'valorTotal' => 'required',
            'posicion' => 'required',
-           'imagen' => 'required',
-           'urlpdf' => 'required',
+           'imagen' => 'required|url',
+           'urlpdf' => 'required|url',
            'descripcion' => 'required'
         ]);
 
@@ -81,8 +81,8 @@ class ProyectoController extends Controller
             'dependencia' => 'required',
             'valorTotal' => 'required',
             'posicion' => 'required',
-            'imagen' => 'required',
-            'urlpdf' => 'required',
+            'imagen' => 'required|url',
+            'urlpdf' => 'required|url',
             'descripcion' => 'required'
         ]);
 

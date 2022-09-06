@@ -83,7 +83,7 @@
                         <div class="col-md-4">
                             <label for="posicion" class="form-label" _msthash="3666832"
                                 _msttexthash="76193">Posición</label>
-                            <input type="number" class="form-control" id="posicion" name="posicion">
+                            <input type="number" class="form-control" id="posicion" name="posicion" value="{{ old('posicion') }}">
 
                             @error('posicion')
                                 <small class="text-danger">{{ $message }}</small>
@@ -91,8 +91,8 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="imagen" class="form-label" _msthash="3666832" _msttexthash="76193">Imagen</label>
-                            <input type="text" class="form-control" id="imagen" name="imagen">
+                            <label for="imagen" class="form-label" _msthash="3666832" _msttexthash="76193">URL Imagen</label>
+                            <input type="text" class="form-control" id="imagen" name="imagen" value="{{ old('imagen') }}">
 
                             @error('imagen')
                                 <small class="text-danger">{{ $message }}</small>
@@ -102,7 +102,7 @@
                         <div class="col-md-4">
                             <label for="urlpdf" class="form-label" _msthash="3666832" _msttexthash="76193">Url
                                 PDF</label>
-                            <input type="text" class="form-control" id="urlpdf" name="urlpdf">
+                            <input type="text" class="form-control" id="urlpdf" name="urlpdf" value="{{ old('urlpdf') }}">
 
                             @error('urlpdf')
                                 <small class="text-danger">{{ $message }}</small>
@@ -113,8 +113,7 @@
                             <label for="descripcion" class="form-label" _msthash="3667079"
                                 _msttexthash="112346">Descripción</label>
                             <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Área de texto de ejemplo requerida"
-                                _mstplaceholder="853047">
-                            </textarea>
+                                _mstplaceholder="853047">{{ old('descripcion') }}</textarea>
 
                             @error('descripcion')
                                 <small class="text-danger">{{ $message }}</small>
